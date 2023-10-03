@@ -1,13 +1,21 @@
-from flask import Flask , jsonify
+from flask import Flask , jsonify, render_template ,url_for
 
 
 app = Flask(__name__)
 
 @app.route('/')
 def home():
-    data = jsonify({"message": "welcome to flask"})
-    return data
+    return render_template('home.html')
 
+
+@app.route('/login')
+def login():
+    return render_template('login.html')
+
+
+@app.route('/register')
+def register():
+    return render_template('register.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
