@@ -69,9 +69,17 @@ def login():
                 return redirect(url_for('dashboard'))
     return render_template('login.html', form=form)
 
+
+
 @app.routes('/dashboard',methods=['GET', 'POST'])
 def dashboard():
     return render_template('dashboard.html')
+
+
+@app.route('/logout',methods=['GET','POST'])
+def logout():
+    logout_user()
+    return redirect(url_for('login'))
 
 @app.route('/register', methods=['POST'])
 def register():
